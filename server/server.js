@@ -8,41 +8,47 @@ app.use(cors());
 app.get('/search', async (req, res) => {
     const query = req.query.q || '';
 
-    const { hits } = await client.search({
-        index: 'articles',
-        query: {
-            bool: {
-                should: [
-                    {
-                        wildcard: {
-                            title: {
-                                value: `*${query.toLowerCase()}*`
+    try {
+        const { hits } = await client.search({
+            index: 'articles',
+            query: {
+                bool: {
+                    should: [
+                        {
+                            match_phrase_prefix: {
+                                title: {
+                                    query: query,
+                                    slop: 2
+                                }
+                            }
+                        },
+                        {
+                            match_phrase_prefix: {
+                                body: {
+                                    query: query,
+                                    slop: 2
+                                }
+                            }
+                        },
+                        {
+                            match: {
+                                tags: {
+                                    query: query
+                                }
                             }
                         }
-                    },
-                    {
-                        wildcard: {
-                            body: {
-                                value: `*${query.toLowerCase()}*`
-                            }
-                        }
-                    },
-                    {
-                        wildcard: {
-                            tags: {
-                                value: `*${query.toLowerCase()}*`
-                            }
-                        }
-                    }
-                ]
+                    ]
+                }
             }
-        }
-    });
+        });
 
-    const results = hits.hits.map(hit => hit._source);
-    res.json(results);
+        const results = hits.hits.map(hit => hit._source);
+        res.json(results);
+    } catch (err) {
+        console.error('Elasticsearch search error:', err);
+        res.status(500).send({ error: 'Search failed' });
+    }
 });
-
 
 app.listen(3001, () => {
     console.log('Server running at http://localhost:3001');
