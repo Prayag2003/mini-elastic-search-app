@@ -1,12 +1,26 @@
 # Mini Elastic Search App
 
-This project demonstrates a simple implementation of an Elastic Search application. Elastic Search is a distributed, RESTful search and analytics engine capable of addressing a growing number of use cases. It is commonly used for log and event data analysis, full-text search, and real-time application monitoring.
+![Application Screenshot](assets/prashant.png)
+
+## Table of Contents
+1. [What is Elastic Search?](#what-is-elastic-search)
+    - [Key Features](#key-features)
+2. [Types of Search in Elastic Search](#types-of-search-in-elastic-search)
+    - [Semantic Search](#semantic-search)
+    - [Phonetic Search](#phonetic-search)
+    - [Synonymic Search](#synonymic-search)
+3. [Steps to Run the Application](#steps-to-run-the-application)
+    - [Server Setup](#server-setup)
+    - [Client Setup](#client-setup)
+4. [Endpoints to Test](#endpoints-to-test)
+
+---
 
 ## What is Elastic Search?
 
 Elastic Search is an open-source search engine built on Apache Lucene. It provides a distributed, multitenant-capable full-text search engine with an HTTP web interface and schema-free JSON documents. Elastic Search is designed for horizontal scalability, reliability, and real-time search capabilities.
 
-### Key Features:
+### Key Features
 - **Full-Text Search**: Perform powerful and fast searches on large datasets.
 - **Scalability**: Easily scale horizontally by adding more nodes to the cluster.
 - **Real-Time Data**: Index and search data in near real-time.
@@ -15,14 +29,32 @@ Elastic Search is an open-source search engine built on Apache Lucene. It provid
 
 ---
 
+# Types:
+# Semantic Search
+Semantic search focuses on understanding the intent and contextual meaning behind the search query rather than just matching keywords. It uses natural language processing (NLP) techniques to interpret the relationships between words and phrases.
+
+**Example Use Case**:
+- Searching for "best laptops for programming" returns results that include laptops optimized for coding, even if the exact phrase isn't present in the documents.
+
+# Phonetic Search
+Phonetic search is designed to find words that sound similar to the search query. It is commonly used for handling misspellings, variations in pronunciation, or names that are phonetically similar.
+
+**Example Use Case**:
+- Searching for "Jon" might also return results for "John" or "Jhon."
+
+# Synonymic Search
+Synonymic search expands the search query to include synonyms of the terms provided. This ensures that the search results are more comprehensive and relevant.
+
+**Example Use Case**:
+- Searching for "car" might also return results for "Prashant" or "Crossiant."
+
+![Search Filters](assets/filter.png)
+
+---
+
 ## Steps to Run the Application
 
 Follow these steps to set up and run the Mini Elastic Search App:
-
-Clone the repository:
-```bash
-git clone https://github.com/Prayag2003/mini-elastic-search-app.git
-```
 
 ### Server Setup
 1. Navigate to the `server` directory:
@@ -70,19 +102,21 @@ git clone https://github.com/Prayag2003/mini-elastic-search-app.git
 
 You can test the following endpoints to interact with the application:
 
-1. Elastic Search API:
+**Go to [localhost:5173](http://localhost:5173) to view the application UI.**
+
+1. **Elastic Search API**:
     ```
     http://localhost:9200/articles/_search
     ```
     Use this endpoint to query the Elastic Search index directly.
 
-2. Search API (Query: `elasticsearch`):
+2. **Search API (Query: `elasticsearch`)**:
     ```
     http://localhost:3001/search?q=elasticsearch
     ```
     Use this endpoint to search for articles related to "elasticsearch."
 
-3. Search API (Query: `node`):
+3. **Search API (Query: `node`)**:
     ```
     http://localhost:3001/search?q=node
     ```
@@ -90,4 +124,4 @@ You can test the following endpoints to interact with the application:
 
 ---
 
-![alt text](assets/UI.png)
+![Application UI](assets/UI.png)

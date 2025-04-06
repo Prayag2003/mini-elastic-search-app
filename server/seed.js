@@ -123,14 +123,34 @@ const articles = Array.from({ length: 50 }, (_, i) => ({
 
 const extraArticles = [
     {
-        title: 'Prashant: The Curious Developer',
-        body: 'A humorous tale of how Prashant became synonymous with croissants in tech memes.',
-        tags: ['prashant', 'croissant', 'meme', 'funny', 'phonetic']
-    },
-    {
         title: 'Croissant Dev Diaries',
         body: 'Logs of a developer who codes better with croissants.',
         tags: ['croissant', 'js', 'prashant', 'soundex']
+    },
+    {
+        title: 'Croissant Chronicles',
+        body: 'Exploring the buttery layers of croissants and their impact on productivity.',
+        tags: ['croissant', 'productivity', 'food']
+    },
+    {
+        title: 'The Croissant Effect',
+        body: 'How croissants became a symbol of creativity in the tech world.',
+        tags: ['croissant', 'creativity', 'tech']
+    },
+    {
+        title: 'Mastering the Art of Croissants',
+        body: 'A guide to baking the perfect croissant and its parallels to coding.',
+        tags: ['croissant', 'baking', 'coding']
+    },
+    {
+        title: 'Croissants and Coffee',
+        body: 'The perfect pairing for brainstorming your next big idea.',
+        tags: ['croissant', 'coffee', 'brainstorming']
+    },
+    {
+        title: 'The Science Behind Croissants',
+        body: 'Understanding the chemistry of croissants and its lessons for developers.',
+        tags: ['croissant', 'science', 'developers']
     },
     {
         title: 'The Rise of AI',
