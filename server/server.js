@@ -11,9 +11,30 @@ app.get('/search', async (req, res) => {
     const { hits } = await client.search({
         index: 'articles',
         query: {
-            multi_match: {
-                query,
-                fields: ['title^2', 'body', 'tags']
+            bool: {
+                should: [
+                    {
+                        wildcard: {
+                            title: {
+                                value: `*${query.toLowerCase()}*`
+                            }
+                        }
+                    },
+                    {
+                        wildcard: {
+                            body: {
+                                value: `*${query.toLowerCase()}*`
+                            }
+                        }
+                    },
+                    {
+                        wildcard: {
+                            tags: {
+                                value: `*${query.toLowerCase()}*`
+                            }
+                        }
+                    }
+                ]
             }
         }
     });
@@ -21,6 +42,7 @@ app.get('/search', async (req, res) => {
     const results = hits.hits.map(hit => hit._source);
     res.json(results);
 });
+
 
 app.listen(3001, () => {
     console.log('Server running at http://localhost:3001');
