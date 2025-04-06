@@ -5,7 +5,6 @@ const client = require('./esClient');
 const app = express();
 app.use(cors());
 
-// Main search route
 app.get('/search', async (req, res) => {
     const query = req.query.q?.toLowerCase() || '';
     if (!query.trim()) return res.json([]);
@@ -16,7 +15,7 @@ app.get('/search', async (req, res) => {
             query: {
                 bool: {
                     should: [
-                        // 🎯 Primary full-text search with phonetic + synonyms
+                        // primary full-text search with phonetic + synonyms
                         {
                             multi_match: {
                                 query,
@@ -26,7 +25,7 @@ app.get('/search', async (req, res) => {
                             }
                         },
 
-                        // 🌀 Fallback wildcard search (slow but useful for partials)
+                        // Fallback wildcard search (slow but useful for partials)
                         {
                             wildcard: {
                                 title: { value: `*${query}*`, case_insensitive: true }

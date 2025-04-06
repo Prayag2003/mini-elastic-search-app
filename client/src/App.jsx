@@ -15,7 +15,6 @@ function App() {
       return;
     }
 
-    // Only fetch results when in search mode
     if (!isSearchMode) return;
 
     const fetchData = async () => {
@@ -31,7 +30,6 @@ function App() {
     return () => clearTimeout(delay);
   }, [query, isSearchMode]);
 
-  // Handle clicks outside the search area
   useEffect(() => {
     function handleClickOutside(event) {
       if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -57,7 +55,6 @@ function App() {
 
   const handleInputFocus = () => {
     setIsSearchMode(true);
-    // Clear selected result when returning to search
     if (selectedResult) {
       setSelectedResult(null);
     }
