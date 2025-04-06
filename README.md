@@ -19,6 +19,11 @@ Elastic Search is an open-source search engine built on Apache Lucene. It provid
 
 Follow these steps to set up and run the Mini Elastic Search App:
 
+Clone the repository:
+```bash
+git clone https://github.com/Prayag2003/mini-elastic-search-app.git
+```
+
 ### Server Setup
 1. Navigate to the `server` directory:
     ```bash
