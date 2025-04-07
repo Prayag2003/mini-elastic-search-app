@@ -63,7 +63,7 @@ Follow these steps to set up and run the Mini Elastic Search App:
     ```
 2. Start the Elastic Search service using Docker:
     ```bash
-    docker run build
+    docker-compose build
     docker-compose up
     ```
 3. Install the required dependencies:
